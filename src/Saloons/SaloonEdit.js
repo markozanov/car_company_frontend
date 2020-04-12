@@ -27,6 +27,9 @@ const SaloonEdit = (props) => {
             city: saloon.city,
             carCapacity: saloon.carCapacity,
         };
+
+        if (!validateSaloon(modifiedSaloon))
+            return;
         props.onSubmit(saloonID, modifiedSaloon);
         setToRedirect(true);
     };
@@ -57,6 +60,23 @@ const SaloonEdit = (props) => {
     const cancelGoBack = () => {
         setToRedirect(true);
     };
+
+
+    const validateSaloon = (s) => {
+        let isValid = true;
+
+        if (s.city === "" || s.city.length > 50)
+            isValid = false;
+
+        if(s.carCapacity === 0 || s.carCapacity <= s.cars?.length || s.carCapacity === null)
+            isValid = false;
+
+
+        setIsInputValid(isValid);
+
+        return isValid;
+    };
+
 
     if(toRedirect)
         return <Redirect to={"/saloons"}/>;

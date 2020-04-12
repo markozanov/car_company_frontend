@@ -13,13 +13,13 @@ class CarRow extends Component {
                 <td scope="col">{this.props.car.price}</td>
                 <td scope="col">{this.props.car.sold ? "Sold" : "Available"}</td>
                 <td scope="col">
-                    {localStorage.getItem("signedIN") === "true" && (
+                    {localStorage.getItem("signedIN") === "true" && this.props.car.sold === false && (
                     <Link className="btn btn-sm btn-secondary" to={"/cars/" + this.props.car.car_id + "/edit"}>
                         <span className="fa fa-edit"/>
                         <span><strong>Edit</strong></span>
                     </Link>
                     )}
-                    {localStorage.getItem("signedIN") === "true" && (
+                    {localStorage.getItem("signedIN") === "true" && this.props.car.sold === false && (
                     <button className="btn btn-sm btn-outline-secondary"  onClick={() => this.props.onDelete(this.props.car.car_id)}>
                         <span className="fa fa-remove"/>
                         <span><strong>Remove</strong></span>

@@ -33,6 +33,7 @@ import Logout from "./Auth/Logout";
 import clientsService from "./Clients/ClientsRepository";
 import Clients from "./Clients/Clients";
 import Home from "./Home";
+import Congrats from "./Purchases/Congrats";
 
 class App extends React.Component {
 
@@ -46,7 +47,6 @@ class App extends React.Component {
             purchases: {},
             clients: {}
         };
-
     }
 
 
@@ -58,6 +58,16 @@ class App extends React.Component {
         this.loadUsers();
         this.loadPurchases();
         this.loadClients();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (localStorage.getItem("username") === null) {
+            localStorage.setItem("username", "");
+        }
+
+        if (localStorage.getItem("signedIN") === null) {
+            localStorage.setItem("signedIN", "false");
+        }
     }
 
     loadCars() {
@@ -348,6 +358,7 @@ class App extends React.Component {
 
                             <Route path={"/success"} render={() => <Success/>}/>
                             <Route path={"/failure"} render={() => <Failure/>}/>
+                            <Route path={"/congrats"} render={() => <Congrats/>}/>
                             <Route path={"/"} exact render={() => <Home/>}/>
                             <Route render={() => <Redirect to={"/"}/>}/>
                         </Switch>

@@ -17,6 +17,9 @@ const CarEdit = (props) => {
         })
     }, []);
 
+    if(car.sold === true)
+        window.location.href = "/cars";
+
     const onFormSubmit = (e) => {
         e.preventDefault();
 

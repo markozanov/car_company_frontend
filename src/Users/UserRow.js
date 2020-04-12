@@ -15,11 +15,7 @@ class UserRow extends Component {
                         <span><strong>Edit</strong></span>
                     </Link>
                     )}
-                    <button className="btn btn-sm btn-outline-secondary"
-                            onClick={() => this.props.onDelete(this.props.user.username)}>
-                        <span className="fa fa-remove"/>
-                        <span><strong>Remove</strong></span>
-                    </button>
+
                 </td>
             </tr>
         )

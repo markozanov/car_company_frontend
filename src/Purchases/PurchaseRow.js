@@ -14,11 +14,6 @@ class PurchaseRow extends Component {
                 <td scope="col">{this.props.purchase.date}</td>
                 <td scope="col">
 
-                    <button className="btn btn-sm btn-outline-secondary" onClick={() => this.props.onDelete(this.props.purchase.purchase_id)}>
-                        <span className="fa fa-remove"/>
-                        <span><strong>Remove</strong></span>
-                    </button>
-
                 </td>
             </tr>
         )

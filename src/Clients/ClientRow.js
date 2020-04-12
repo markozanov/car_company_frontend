@@ -12,10 +12,7 @@ class ClientRow extends Component {
                 <td scope="col">{this.props.client.embg}</td>
                 <td scope="col">{this.props.client.purchases.length}</td>
                 <td scope="col">
-                    <button className="btn btn-sm btn-outline-secondary">
-                        <span className="fa fa-remove"/>
-                        <span><strong>Remove</strong></span>
-                    </button>
+
 
                 </td>
             </tr>

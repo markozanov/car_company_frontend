@@ -51,10 +51,8 @@ const UserAdd = (props) => {
         const target = event.target;
         const name = target.name;
         let value;
-        if (target.type === 'radio-button') // ????
-        {} // ????
-        else
-            value = target.value;
+
+        value = target.value;
 
         const changedUser = {
             ...user,

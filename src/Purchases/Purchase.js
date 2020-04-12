@@ -114,7 +114,7 @@ const Purchase = (props) => {
     if(toRedirect === 0)
         return <Redirect to={"/cars"}/>;
     if(toRedirect === 1)
-        return <Redirect to={"/"}/>; 
+        return <Redirect to={"/congrats"}/>;
 
 
     let employeesDropDown = (

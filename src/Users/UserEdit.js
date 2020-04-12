@@ -21,14 +21,13 @@ const UserEdit = (props) => {
                 password: ""
             });
             setOldUser(response.data);
-            // console.log(JSON.stringify(response.data));
         })
     }, []);
 
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        if(!isInputValid)
+        if(!validateUser(user))
             return;
 
         let modifiedUser = {
@@ -36,6 +35,9 @@ const UserEdit = (props) => {
             password: sha256(user.password),
             is_admin: user.is_admin
         };
+
+
+
         props.onSubmit(username, modifiedUser);
         setToRedirect(true);
     };
@@ -64,6 +66,22 @@ const UserEdit = (props) => {
     const cancelGoBack = () => {
         setToRedirect(true);
     };
+
+    const validateUser = (u) => {
+        let isValid = true;
+
+        if (u.username === "" || u.username.length > 50)
+            isValid = false;
+
+        if (u.password === "" || u.password.length > 50)
+            isValid = false;
+
+
+        setIsInputValid(isValid);
+
+        return isValid;
+    };
+
 
     if(toRedirect)
         return <Redirect to={"/users"}/>;

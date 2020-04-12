@@ -20,13 +20,16 @@ const EmployeeEdit = (props) => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        if(!isInputValid)
-            return;
 
         let modifiedEmployee = {
             fname: employee.fname,
             lname: employee.lname
         };
+
+
+        if(!validateEmployee(modifiedEmployee))
+            return;
+
         props.onSubmit(employeeID, modifiedEmployee);
         setToRedirect(true);
     };
@@ -58,6 +61,22 @@ const EmployeeEdit = (props) => {
         setToRedirect(true);
     };
 
+    const validateEmployee = (e) => {
+        let isValid = true;
+
+        if (e.fname === "" || e.fname.length > 50)
+            isValid = false;
+
+        if (e.lname === "" || e.lname.length > 50)
+            isValid = false;
+
+
+        setIsInputValid(isValid);
+
+        return isValid;
+    };
+
+
     if(toRedirect)
         return <Redirect to={"/employees"}/>;
 
@@ -78,7 +97,7 @@ const EmployeeEdit = (props) => {
                     <label htmlFor="fname" className="col-sm-4 offset-sm-1 text-left">First Name</label>
                     <div className="col-sm-6">
                         <input type="text"  className="form-control" id="fname" name="fname"
-                                value={employee.fname} onChange={handleInputChange}/>
+                               disabled value={employee.fname} />
                     </div>
                 </div>
 
@@ -86,7 +105,7 @@ const EmployeeEdit = (props) => {
                     <label htmlFor="lname" className="col-sm-4 offset-sm-1 text-left">Last Name</label>
                     <div className="col-sm-6">
                         <input type="text"  className="form-control" id="lname" name="lname"
-                               value={employee.lname} onChange={handleInputChange}/>
+                              value={employee.lname} onChange={handleInputChange}/>
                     </div>
                 </div>
 
